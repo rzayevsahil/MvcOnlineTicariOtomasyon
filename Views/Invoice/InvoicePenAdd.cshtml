@@ -1,0 +1,27 @@
+﻿@model MvcOnlineTicariOtomasyon.Models.Classes.InvoicePen
+@{
+    ViewBag.Title = "InvoicePenAdd";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<br />
+<h2>Yeni Fatura Kalem Sayfası</h2>
+<br />
+<form class="form-group" method="post">
+    @Html.LabelFor(ip => ip.Explanation)
+    @Html.TextBoxFor(ip => ip.Explanation, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(ip => ip.Quantity)
+    @Html.TextBoxFor(ip => ip.Quantity, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(ip => ip.UnitPrice)
+    @Html.TextBoxFor(ip => ip.UnitPrice, new { @class = "form-control" })
+    @*<br />
+    @Html.LabelFor(ip => ip.Amount)
+    @Html.TextBoxFor(ip => ip.Amount, new { @class = "form-control" })*@
+    @*<br />
+    @Html.LabelFor(ip => ip.InvoiceId)
+    @Html.TextBoxFor(ip => ip.InvoiceId, new { @class = "form-control" })*@
+    <br />
+    <button class="btn btn-primary">Kaydet</button>
+    <a style="background-color: crimson; color: white;" href="/Invoice/Index/" class="btn btn-default">Geri</a>
+</form>

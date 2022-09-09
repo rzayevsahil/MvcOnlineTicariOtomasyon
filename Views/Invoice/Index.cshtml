@@ -1,0 +1,74 @@
+﻿@using MvcOnlineTicariOtomasyon.Models.Classes
+@model List<Invoice>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<table class="table table-bordered" style="margin-top: 20px">
+    <tr>
+        @*<th>ID</th>*@
+        <th>Seri ve Sıra No</th>
+        <th>Vergi Dairesi</th>
+        <th>Tarih</th>
+        <th>Saat</th>
+        <th>Teslim Eden</th>
+        <th>Teslim Alan</th>
+        <th>Toplam</th>
+        <th>Güncelle</th>
+        <th>Detaylar</th>
+        @*<th>Popup</th>
+        <th>Yeni Kalem</th>*@
+        @*<th>Sil</th>*@
+    </tr>
+    @foreach (var d in Model)
+    {
+        <tr>
+            @*<td>@d.InvoiceID</td>*@
+            <td>@d.InvoiceSerialNumber @d.InvoiceRowNumber</td>
+            <td>@d.TaxAdministration</td>
+            <td>@Convert.ToDateTime(d.Date).ToString("dd/MM/yyyy")</td>
+            <td>@d.Hour</td>
+            <td>@d.Submitter</td>
+            <td>@d.Receiver</td>
+            <td>@d.Total ₺</td>
+            <td><a href="/Invoice/InvoiceGet/@d.InvoiceID" class="btn btn-success">Güncelle</a></td>
+            <td><a href="/Invoice/InvoiceDetail/@d.InvoiceID" class="btn btn-primary">Detay</a></td>
+            @*<td><a href="/Invoice/InvoiceDetail/@d.InvoiceID" class="btn btn-primary" style="background-color: blueviolet; border-color: blueviolet">1</a></td>
+            <td><a href="/Invoice/InvoiceDetail/@d.InvoiceID" class="btn btn-primary" style="background-color: crimson; border-color: crimson">2</a></td>*@
+            @*<td><a href="/Invoice/InvoiceDelete/@d.InvoiceID" class="btn btn-danger">Sil</a></td>*@
+        </tr>
+    }
+</table>
+<a href="/Invoice/InvoiceAdd/" class="btn btn-info">Fatura Ekle</a>
+<br />
+<br />
+<button type="button" class="btn btn-primary" style="background-color: deeppink;border-color: deeppink" data-toggle="modal" data-target="#Modal1">Popup penceresi</button>
+
+<div class="modal" id="Modal1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Başlık</h2>
+            </div>
+            <div class="modal-body">
+                <table class="table table-bordered">
+                    <tr>
+                        <td>Seri No</td>
+                        <td>Sıra No</td>
+                        <td>Toplam</td>
+                    </tr>
+                    @foreach (var x in Model)
+                    {
+                        <tr>
+                            <td>@x.InvoiceSerialNumber</td>
+                            <td>@x.InvoiceRowNumber</td>
+                            <td>@x.Total</td>
+                        </tr>
+                    }
+                </table>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Kapat</button>
+            </div>
+        </div>
+    </div>
+</div>

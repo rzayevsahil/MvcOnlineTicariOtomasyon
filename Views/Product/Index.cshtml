@@ -1,0 +1,55 @@
+﻿@using MvcOnlineTicariOtomasyon.Models.Classes;
+@using PagedList.Mvc
+@using PagedList
+@model IPagedList<Product>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<br />
+@using (Html.BeginForm("Index", "Product", FormMethod.Get))
+{
+    <p>
+        Ürün Adı: @Html.TextBox("p", null, new { @placeholder = "Ara" })
+        <input type="submit" value="Ara" />
+    </p>
+}
+<br />
+<table class="table table-bordered">
+    <tr>
+        @*<th>ID</th>*@
+        <th>#</th>
+        <th>ÜRÜN</th>
+        <th>MARKA</th>
+        <th>STOK</th>
+        <th>ALIŞ FİYAT</th>
+        <th>SATIŞ FİYAT</th>
+        <th>KATEGORİ</th>
+        <th>GÖRSEL</th>
+        @*<th>Detaylar</th>*@
+        <th>SİL</th>
+        <th>GÜNCELLE</th>
+        <th>Satış Yap</th>
+    </tr>
+    @{ int rowNumber = 0;}
+    @foreach (var p in Model)
+    {
+        <tr>
+            @*<td>@p.ProductID</td>*@
+            <td>@{ rowNumber++;} @rowNumber</td>
+            <td>@p.ProductName</td>
+            <td>@p.Brand</td>
+            <td>@p.Stock</td>
+            <td>@p.PurchhasePrice ₺</td>
+            <td>@p.SalesPrice ₺</td>
+            <td>@p.Category.CategoryName</td>
+            <td><img src="@p.ProductImage" width="90px" height="90px" /></td>
+            @*<td><a href="/Product/ProductDetail/@p.ProductID/" class="btn btn-warning">Detaylar</a></td>*@
+            <td><a href="/Product/ProductDelete/@p.ProductID/" class="btn btn-danger">Sil</a></td>
+            <td><a href="/Product/ProductGet/@p.ProductID/" class="btn btn-success">Güncelle</a></td>
+            <td><a href="/Product/ProductMakeSale/@p.ProductID/" class="btn btn-success" style="background-color: blueviolet;border-color: blueviolet">Satış Yap</a></td>
+        </tr>
+    }
+</table>
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }), new PagedListRenderOptions { LinkToFirstPageFormat = "<< İlk", LinkToPreviousPageFormat = "< Önceki", LinkToNextPageFormat = "Sonraki >", LinkToLastPageFormat = "Son >>" })
+<a href="/Product/ProductAdd/" class="btn btn-info">Ürün Ekle</a>

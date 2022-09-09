@@ -1,0 +1,40 @@
+﻿@using MvcOnlineTicariOtomasyon.Models.Classes
+@model List<SalesMovement>
+@{
+    ViewBag.Title = "SalesDetail";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<br />
+<h2>Satış Detayı</h2>
+<br />
+
+
+<table class="table table-condensed">
+    <tr>
+        <th>Satış Id</th>
+        <th>Ürün</th>
+        <th>Cari</th>
+        <th>Personel</th>
+        <th>Fiyat</th>
+        <th>Adet</th>
+        <th>Toplam</th>
+        <th>Tarih</th>
+    </tr>
+    @foreach (var salesMovement in Model)
+    {
+        <tr>
+            <td>@salesMovement.SalesID</td>
+            <td>@salesMovement.Product.ProductName</td>
+            <td>@salesMovement.Concubine.ConcubineName @salesMovement.Concubine.ConcubineSurname</td>
+            <td>@salesMovement.Employee.EmployeeName @salesMovement.Employee.EmployeeSurname</td>
+            <td>@salesMovement.Price ₺</td>
+            <td>@salesMovement.Piece</td>
+            <td>@salesMovement.TotalAmount ₺</td>
+            <td>@salesMovement.Date</td>
+        </tr>
+    }
+</table>
+<br />
+<a style="background-color: crimson; color: white;" href="/Sales/Index/" class="btn btn-default">Geri</a>
+<a style="background-color: cornflowerblue; color: white;" href="/Employee/Index/" class="btn btn-default">Personel Sayfasına git</a>
+<a href="#" class="btn btn-default" style="background-color: blueviolet; color: white">Yazdır</a>

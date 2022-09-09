@@ -1,0 +1,41 @@
+﻿@using MvcOnlineTicariOtomasyon.Models.Classes
+@model List<SalesMovement>
+@{
+    ViewBag.Title = "DepartmentEmployeeSales";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<br />
+<h2>Departman Personel Satış</h2>
+<br />
+
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Personel Adı: @ViewBag.employeeNameSurname</li>
+</ol>
+<table class="table table-condensed">
+    <tr>
+        <th>Satış Id</th>
+        <th>Ürün</th>
+        <th>Cari</th>
+        <th>Fiyat</th>
+        <th>Adet</th>
+        <th>Toplam</th>
+        <th>Tarih</th>
+        <th>Yazır</th>
+    </tr>
+    @foreach (var salesMovement in Model)
+    {
+        <tr>
+            <td>@salesMovement.SalesID</td>
+            <td>@salesMovement.Product.ProductName</td>
+            <td>@salesMovement.Concubine.ConcubineName @salesMovement.Concubine.ConcubineSurname</td>
+            <td>@salesMovement.Price ₺</td>
+            <td>@salesMovement.Piece</td>
+            <td>@salesMovement.TotalAmount ₺</td>
+            <td>@salesMovement.Date</td>
+            <td><a href="#" class="btn btn-default" style="background-color: blueviolet; color: white">Yazdır</a></td>
+        </tr>
+    }
+</table>
+<br />
+<a style="background-color: crimson; color: white;" href="/Department/DepartmentDetail/@ViewBag.departmentId" class="btn btn-default">Geri</a>
+<a style="background-color: cornflowerblue; color: white;" href="/Employee/Index/" class="btn btn-default">Personel Sayfasına git</a>

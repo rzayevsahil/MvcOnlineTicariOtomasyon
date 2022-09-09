@@ -1,0 +1,65 @@
+﻿@using MvcOnlineTicariOtomasyon.Models.Classes
+@model List<SalesMovement>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+@if (Model.Count == 0)
+{
+    <br />
+    <div style="text-align: center">
+        <h1 style="color: red; font-weight: bold">Personel Yok</h1>
+    </div>
+    <br />
+}
+else
+{
+    <br/>
+    <table id="tbl1" class="table table-bordered" style="margin-top: 20px">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Ürün</th>
+                <th>Cari</th>
+                <th>Personel</th>
+                <th>Adet</th>
+                <th>Fiyat</th>
+                <th>Toplam</th>
+                <th>Tarih</th>
+                <th>Sil</th>
+                <th>Güncelle</th>
+                <th>Detaylar</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var s in Model)
+            {
+                <tr>
+                    <td>@s.SalesID</td>
+                    <td>@s.Product.ProductName</td>
+                    <td>@s.Concubine.ConcubineName @s.Concubine.ConcubineSurname</td>
+                    <td>@s.Employee.EmployeeName @s.Employee.EmployeeSurname</td>
+                    <td>@s.Piece</td>
+                    <td>@s.Price ₺</td>
+                    <td>@s.TotalAmount ₺</td>
+                    <td>@s.Date</td>
+                    <td><a href="/Sales/SalesDelete/@s.SalesID" class="btn btn-danger">Sil</a></td>
+                    <td><a href="/Sales/SalesGet/@s.SalesID" class="btn btn-success">Güncelle</a></td>
+                    <td><a href="/Sales/SalesDetail/@s.SalesID" class="btn btn-primary">Detaylar</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+<a href="/Sales/SalesAdd/" class="btn btn-info">Yeni Satış Yap</a>
+
+@*<link href="~/Content/bootstrap.css" rel="stylesheet" />*@
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+
+<script>
+    $('#tbl1').dataTable({});
+</script>

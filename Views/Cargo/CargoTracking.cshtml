@@ -1,0 +1,34 @@
+﻿@using MvcOnlineTicariOtomasyon.Models.Classes
+@model List<CargoTracking>
+@{
+    ViewBag.Title = "CargoTracking";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<br />
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Kargo Takip Numarası: <b>@ViewBag.trackingCode</b></li>
+</ol>
+<table class="table table-striped">
+    <tr>
+        <th>#</th>
+        <th>Açıklama</th>
+        <th>Tarih</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+    </tr>
+    @{ int rowNumber = 0;}
+    @foreach (var c in Model)
+    {
+        <tr>
+            <td>@{ rowNumber++;} @rowNumber</td>
+            <td>@c.Explanation</td>
+            <td>@c.Datetime.ToString("dd.MM.yyyy HH:mm")</td>
+            <td><a href="/Cargo/CargoTrackingDelete/@c.CargoTrackingID" class="btn btn-danger">Sil</a></td>
+            <td><a href="/Cargo/CargoTrackingUpdate/@c.CargoTrackingID" class="btn btn-success">Güncelle</a></td>
+        </tr>
+    }
+</table>
+<a href="/Cargo/CargoTrackingAdd/@ViewBag.trackingCode" class="btn btn-info">Kargo Durumu Ekle</a>
+<a href="/Cargo/Index/" class="btn btn-info" style="border-color: blueviolet;background-color: blueviolet">Geri</a>
+

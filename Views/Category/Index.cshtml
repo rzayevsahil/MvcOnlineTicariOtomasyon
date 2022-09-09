@@ -1,0 +1,53 @@
+﻿@using MvcOnlineTicariOtomasyon.Models.Classes;
+@using PagedList
+@using PagedList.Mvc
+@model IPagedList<Category>
+@*@model PagedList.IPagedList<Category>*@
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<br />
+@using (Html.BeginForm("Index", "Category", FormMethod.Get))
+{
+    <p>
+        Kategori Adı: @Html.TextBox("p", null, new { @placeholder = "Ara" })
+        <input type="submit" value="Ara" />
+    </p>
+}
+<table class="table table-bordered" style="margin-top: 20px">
+    <tr>
+        @*<th>ID</th>*@
+        <th>#</th>
+        <th>Kategori Adı</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+    </tr>
+    @{ int rowNumber = 0;}
+    @if (rowNumber >= 0)
+    {
+
+    }
+    @foreach (var c in Model)
+    {
+        <tr>
+            @*<td>
+                    @c.CategoryID
+                </td>*@
+
+            <td>@{ rowNumber++;} @rowNumber</td>
+            <td>
+                @c.CategoryName
+            </td>
+            <td>
+                <a href="/Category/CategoryDelete/@c.CategoryID" class="btn btn-danger">Sil</a>
+            </td>
+            <td>
+                <a href="/Category/CategoryGet/@c.CategoryID" class="btn btn-success">Güncelle</a>
+            </td>
+        </tr>
+    }
+</table>
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }), new PagedListRenderOptions { LinkToFirstPageFormat = "<< İlk", LinkToPreviousPageFormat = "< Önceki", LinkToNextPageFormat = "Sonraki >", LinkToLastPageFormat = "Son >>" })
+@*@Html.PagedListGoToPageForm(Model, Url.Action("Index","Category"))*@
+<a href="/Category/CategoryAdd/" class="btn btn-info">Kategori Ekle</a>

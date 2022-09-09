@@ -1,0 +1,40 @@
+﻿@using MvcOnlineTicariOtomasyon.Models.Classes
+@model List<SalesMovement>
+@{
+    ViewBag.Title = "CustomerSales";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<br />
+<h2>Cari Satış</h2>
+<br />
+
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Cari Adı: @ViewBag.employeeNameSurname</li>
+</ol>
+<table class="table table-condensed">
+    <tr>
+        <th>Satış Id</th>
+        <th>Ürün</th>
+        <th>Personel</th>
+        <th>Fiyat</th>
+        <th>Adet</th>
+        <th>Toplam</th>
+        <th>Tarih</th>
+        <th>Yazır</th>
+    </tr>
+    @foreach (var salesMovement in Model)
+    {
+        <tr>
+            <td>@salesMovement.SalesID</td>
+            <td>@salesMovement.Product.ProductName</td>
+            <td>@salesMovement.Employee.EmployeeName @salesMovement.Employee.EmployeeSurname</td>
+            <td>@salesMovement.Price</td>
+            <td>@salesMovement.Piece</td>
+            <td>@salesMovement.TotalAmount</td>
+            <td>@salesMovement.Date</td>
+            <td><a href="#" class="btn btn-default" style="background-color: blueviolet; color: white">Yazdır</a></td>
+        </tr>
+    }
+</table>
+<br />
+<a style="background-color: crimson; color: white;" href="/Concubine/Index/" class="btn btn-default">Geri</a>

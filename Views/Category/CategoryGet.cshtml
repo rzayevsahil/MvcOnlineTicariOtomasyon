@@ -1,0 +1,19 @@
+﻿@model MvcOnlineTicariOtomasyon.Models.Classes.Category
+@{
+    ViewBag.Title = "CategoryGet";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<br />
+<h2>Kategori Getir Sayfası</h2>
+<br />
+@using (Html.BeginForm("CategoryUpdate", "Category", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.HiddenFor(x => x.CategoryID)
+        @Html.LabelFor(x => x.CategoryName)
+        @Html.TextBoxFor(x => x.CategoryName, new { @class = "form-control" })
+        <br/>
+        <button class="btn btn-warning">Güncelle</button>
+        <a style="background-color: crimson; color: white;" href="/Category/Index/" class="btn btn-default">Geri</a>
+    </div>
+}

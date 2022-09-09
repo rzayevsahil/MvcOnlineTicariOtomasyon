@@ -1,0 +1,33 @@
+﻿@using MvcOnlineTicariOtomasyon.Models.Classes
+@model List<Concubine>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<br/>
+<table class="table table-striped">
+    <tr>
+        @*<th>Cari ID</th>*@
+        <th>Ad</th>
+        <th>Soyad</th>
+        <th>Şehir</th>
+        <th>Mail</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+        <th>Detaylar</th>
+    </tr>
+    @foreach (var c in Model)
+    {
+        <tr>
+            @*<td>@c.ConcubineID</td>*@
+            <td>@c.ConcubineName</td>
+            <td>@c.ConcubineSurname</td>
+            <td>@c.ConcubineCity</td>
+            <td>@c.ConcubineMail</td>
+            <td><a href="/Concubine/ConcubineDelete/@c.ConcubineID" class="btn btn-danger">Sil</a></td>
+            <td><a href="/Concubine/ConcubineGet/@c.ConcubineID" class="btn btn-success">Güncelle</a></td>
+            <td><a href="/Concubine/CustomerSales/@c.ConcubineID" class="btn btn-primary">Satış Geçmişi</a></td>
+        </tr>
+    }
+</table>
+<a href="/Concubine/ConcubineAdd/" class="btn btn-info">Cari Ekle</a>

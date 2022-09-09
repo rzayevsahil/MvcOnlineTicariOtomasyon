@@ -1,0 +1,38 @@
+﻿@using MvcOnlineTicariOtomasyon.Models.Classes
+@using PagedList.Mvc
+@model PagedList.IPagedList<CargoDetail>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<br/>
+@using (Html.BeginForm("Index", "Cargo", FormMethod.Get))
+{
+    <p>
+        Kargo Takip Numarası : @Html.TextBox("p", null, new { @placeholder = "Ara" })
+        <input type="submit" value="Ara" placeholder="Takip kodu giriniz..." />
+    </p>
+}
+<table class="table table-bordered" style="margin-top: 20px">
+    <tr>
+        <th>Personel</th>
+        <th>Alıcı</th>
+        <th>Takip Kodu</th>
+        <th>Tarih</th>
+        <th>Detaylar</th>
+    </tr>
+    @foreach (var c in Model)
+    {
+        <tr>
+            <td>@c.Employee</td>
+            <td>@c.Receiver</td>
+            <td>@c.TrackingCode</td>
+            <td>@c.Date.ToShortDateString()</td>
+            <td>
+                <a href="/Cargo/CargoTracking/@c.TrackingCode" class="btn btn-primary">Detaylar</a>
+            </td>
+        </tr>
+    }
+</table>
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }), new PagedListRenderOptions { LinkToFirstPageFormat = "<< İlk", LinkToPreviousPageFormat = "< Önceki", LinkToNextPageFormat = "Sonraki >", LinkToLastPageFormat = "Son >>" })
+<a href="/Cargo/CargoAdd/" class="btn btn-info">Yeni Kargo Girişi</a>

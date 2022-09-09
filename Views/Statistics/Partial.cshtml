@@ -1,0 +1,30 @@
+﻿@using MvcOnlineTicariOtomasyon.Models.Classes
+@model List<Category>
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Kategori Tablosu</h3>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th style="width: 10px">#</th>
+                    <th>Kategori ID</th>
+                    <th>Kategori</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{ int rowNumber = 0;}
+                @foreach (var x in Model)
+                {
+                    <tr>
+                        <td>@{ rowNumber++;} @rowNumber</td>
+                        <td>@x.CategoryID</td>
+                        <td>@x.CategoryName</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

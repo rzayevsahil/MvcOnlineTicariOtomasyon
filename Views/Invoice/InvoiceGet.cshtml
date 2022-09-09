@@ -1,0 +1,37 @@
+﻿@model MvcOnlineTicariOtomasyon.Models.Classes.Invoice
+@{
+    ViewBag.Title = "InvoiceGet";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<br />
+<h2>Fatura Güncelleme Sayfası</h2>
+<br />
+@using (Html.BeginForm("InvioceUpdate", "Invoice", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.HiddenFor(i => i.InvoiceID)
+        @Html.LabelFor(i => i.InvoiceSerialNumber)
+        @Html.TextBoxFor(i => i.InvoiceSerialNumber, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(i => i.InvoiceRowNumber)
+        @Html.TextBoxFor(i => i.InvoiceRowNumber, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(i => i.TaxAdministration)
+        @Html.TextBoxFor(i => i.TaxAdministration, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(i => i.Date)
+        @Html.TextBoxFor(i => i.Date, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(i => i.Hour)
+        @Html.TextBoxFor(i => i.Hour, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(i => i.Submitter)
+        @Html.TextBoxFor(i => i.Submitter, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(i => i.Receiver)
+        @Html.TextBoxFor(i => i.Receiver, new { @class = "form-control" })
+        <br />
+        <button class="btn btn-warning">Güncelle</button>
+        <a style="background-color: crimson; color: white;" href="/Invoice/Index/" class="btn btn-default">Geri</a>
+    </div>
+}

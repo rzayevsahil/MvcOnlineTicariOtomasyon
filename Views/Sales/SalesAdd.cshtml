@@ -1,0 +1,30 @@
+﻿@model MvcOnlineTicariOtomasyon.Models.Classes.SalesMovement
+@{
+    ViewBag.Title = "SalesAdd";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<br />
+<h2>Yeni Satış Sayfası</h2>
+<br />
+<form class="form-group" method="post">
+    @Html.LabelFor(p => p.Product)
+    @Html.DropDownListFor(p => p.ProductId, (List<SelectListItem>)ViewBag.value1, new { @class = "form-control" })
+    <br />
+    @Html.Label("Cari")
+    @Html.DropDownListFor(p => p.ConcubineId, (List<SelectListItem>)ViewBag.value2, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(p => p.Employee)
+    @Html.DropDownListFor(p => p.EmployeeId, (List<SelectListItem>)ViewBag.value3, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(p => p.Price)
+    @Html.TextBoxFor(p => p.Price, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(p => p.Piece)
+    @Html.TextBoxFor(p => p.Piece, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(p => p.TotalAmount)
+    @Html.TextBoxFor(p => p.TotalAmount, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-primary">Satış Yap</button>
+    <a style="background-color: crimson; color: white;" href="/Sales/Index/" class="btn btn-default">Geri</a>
+</form>

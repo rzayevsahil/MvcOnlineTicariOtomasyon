@@ -1,0 +1,24 @@
+﻿@model MvcOnlineTicariOtomasyon.Models.Classes.Concubine
+@{
+    ViewBag.Title = "ConcubineAdd";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<br/>
+<h2>Yeni Cari Sayfası</h2>
+<br />
+<form class="form-group" method="post">
+    @Html.LabelFor(c => c.ConcubineName)
+    @Html.TextBoxFor(c => c.ConcubineName, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(c => c.ConcubineSurname)
+    @Html.TextBoxFor(c => c.ConcubineSurname, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(c => c.ConcubineCity)
+    @Html.TextBoxFor(c => c.ConcubineCity, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(c => c.ConcubineMail)
+    @Html.TextBoxFor(c => c.ConcubineMail, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-info">Kaydet</button>
+    <a style="background-color: crimson; color: white;" href="/Concubine/Index/" class="btn btn-default">Geri</a>
+</form>

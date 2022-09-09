@@ -1,0 +1,25 @@
+﻿@model MvcOnlineTicariOtomasyon.Models.Classes.CargoTracking
+@{
+    ViewBag.Title = "CargoTrackingUpdate";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<br />
+<h2> Kargo Durumu Güncelleme Sayfası</h2>
+<br />
+<form class="form-group" method="post">
+    @Html.HiddenFor(x => x.CargoTrackingID)
+    @Html.LabelFor(c => c.TrackingCode)
+    <input type="text" value="@ViewBag.trackingCode" readonly class="form-control" name="TrackingCode"/>
+    <br/>
+    @Html.LabelFor(c => c.Datetime)
+    @*@Html.TextBoxFor(c => c.Datetime, new { @class = "form-control", @type = "datetime-local" })*@
+    <input type="datetime-local" value="@ViewBag.Datetime" class="form-control" name="Datetime"/>
+
+    <br/>
+    @Html.LabelFor(c => c.Explanation)
+    @Html.TextAreaFor(c => c.Explanation, new {@class = "form-control"})
+    <br/>
+    <button class="btn btn-info">Kaydet</button>
+    <a style="background-color: crimson; color: white;" href="/Cargo/CargoTracking/@ViewBag.trackingCode" class="btn btn-default">Geri</a>
+</form>

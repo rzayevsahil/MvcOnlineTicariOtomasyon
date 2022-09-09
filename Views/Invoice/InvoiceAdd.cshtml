@@ -1,0 +1,33 @@
+﻿@model MvcOnlineTicariOtomasyon.Models.Classes.Invoice
+@{
+    ViewBag.Title = "InvoiceAdd";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<br />
+<h2>Yeni Fatura Sayfası</h2>
+<br />
+<form class="form-group" method="post">
+    @Html.LabelFor(i => i.InvoiceSerialNumber)
+    @Html.TextBoxFor(i => i.InvoiceSerialNumber, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(i => i.InvoiceRowNumber)
+    @Html.TextBoxFor(i => i.InvoiceRowNumber, new { @class = "form-control" })
+    @*<br />
+    @Html.LabelFor(i => i.Date)
+    @Html.TextBoxFor(i => i.Date, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(i => i.Hour)
+    @Html.TextBoxFor(i => i.Hour, new { @class = "form-control" })*@
+    <br />
+    @Html.LabelFor(i => i.TaxAdministration)
+    @Html.TextBoxFor(i => i.TaxAdministration, new { @class = "form-control" })
+    <br/>
+    @Html.LabelFor(i => i.Submitter)
+    @Html.TextBoxFor(i => i.Submitter, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(i => i.Receiver)
+    @Html.TextBoxFor(i => i.Receiver, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-primary">Kaydet</button>
+    <a style="background-color: crimson; color: white;" href="/Invoice/Index/" class="btn btn-default">Geri</a>
+</form>

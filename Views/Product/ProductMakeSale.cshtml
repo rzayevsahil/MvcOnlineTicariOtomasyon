@@ -1,0 +1,44 @@
+﻿@model MvcOnlineTicariOtomasyon.Models.Classes.SalesMovement
+@{
+    ViewBag.Title = "ProductMakeSale";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<br />
+<h2>Satış Yap</h2>
+<br />
+<form class="form-group" method="post">
+    @Html.LabelFor(p => p.ProductId)
+    <input type="text" name="ProductId" value="@ViewBag.value2" class="form-control" readonly />
+    <br />
+    @Html.LabelFor(p => p.EmployeeId)
+    @Html.DropDownListFor(p => p.EmployeeId, (List<SelectListItem>)ViewBag.value1, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(p => p.ConcubineId)
+    @Html.TextBoxFor(p => p.ConcubineId, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(p => p.Piece)
+    <input type="number" name="Piece" value="0" class="form-control" id="txt1" onchange="sum();" max="10" min="0" placeholder="Adet giriniz..."/>
+    <br />
+    @Html.LabelFor(p => p.Price)
+    <input type="text" name="Price" value="@ViewBag.value3" class="form-control" id="txt2" onkeyup="sum();"/>
+    <br />
+    @Html.LabelFor(p => p.TotalAmount)
+    <input type="text" name="TotalAmount" value="0" class="form-control" id="txt3" readonly />
+    <br />
+    <button class="btn btn-primary">Satış Yap</button>
+    <a style="background-color: crimson; color: white;" href="/Product/Index/" class="btn btn-default">Geri</a>
+</form>
+@*<input type="text" id="txt1" onkeyup="sum();" />
+<input type="text" id="txt2" onkeyup="sum();" />
+<input type="text" id="txt3" />*@
+
+<script>
+    function sum() {
+        var number1 = document.getElementById('txt1').value;
+        var number2 = document.getElementById('txt2').value;
+        var result = parseFloat(number1).toFixed(2) * parseFloat(parseInt(number2)).toFixed(2);
+        if (!isNaN(result)) {
+            document.getElementById('txt3').value = parseFloat(result);
+        }
+    }
+</script>

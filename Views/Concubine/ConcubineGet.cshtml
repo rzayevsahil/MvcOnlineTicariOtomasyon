@@ -1,0 +1,30 @@
+﻿@model MvcOnlineTicariOtomasyon.Models.Classes.Concubine
+@{
+    ViewBag.Title = "ConcubineGet";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<br />
+<h2>Cari Güncelle Sayfası</h2>
+<br />
+@using (Html.BeginForm("ConcubineUpdate", "Concubine", FormMethod.Post))
+{
+<div class="form-group">
+    @Html.HiddenFor(c => c.ConcubineID)
+    @Html.LabelFor(c => c.ConcubineName)
+    @Html.TextBoxFor(c => c.ConcubineName, new { @class = "form-control" })
+    @Html.ValidationMessageFor(c => c.ConcubineName, "", new { @style = "color:red" })
+    <br />
+    @Html.LabelFor(c => c.ConcubineSurname)
+    @Html.TextBoxFor(c => c.ConcubineSurname, new { @class = "form-control" })
+    @Html.ValidationMessageFor(c => c.ConcubineSurname, "", new { @style = "color:red" })
+    <br />
+    @Html.LabelFor(c => c.ConcubineCity)
+    @Html.TextBoxFor(c => c.ConcubineCity, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(c => c.ConcubineMail)
+    @Html.TextBoxFor(c => c.ConcubineMail, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-warning">Güncelle</button>
+    <a style="background-color: crimson; color: white;" href="/Concubine/Index/" class="btn btn-default">Geri</a>
+</div>
+}

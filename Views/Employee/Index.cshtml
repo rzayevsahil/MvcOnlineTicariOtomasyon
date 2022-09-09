@@ -1,0 +1,56 @@
+﻿@using MvcOnlineTicariOtomasyon.Models.Classes;
+@using PagedList.Mvc
+@model PagedList.IPagedList<Employee>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+@if (Model.Count == 0)
+{
+    <br />
+    <div style="text-align: center">
+        <h1 style="color: red; font-weight: bold">Personel Yok</h1>
+    </div>
+    <br />
+}
+else
+{
+    <br/>
+using (Html.BeginForm("Index", "Employee", FormMethod.Get))
+{
+    <p>
+        Personel Adı: @Html.TextBox("p", null, new {placeholder = "Ara"})
+        <input type="submit" value="ara"/>
+    </p>
+}
+    <table class="table table-bordered" style="margin-top: 20px">
+        <tr>
+            @*<th>ID</th>*@
+            <th>Personel Adı</th>
+            <th>Personel Soyadı</th>
+            <th>Görsel</th>
+            <th>Departman</th>
+            <th>Sil</th>
+            <th>Güncelle</th>
+            <th>Satışlar</th>
+        </tr>
+        @foreach (var e in Model)
+        {
+            <tr>
+                @*<td>@e.EmployeeID</td>*@
+                <td>@e.EmployeeName</td>
+                <td>@e.EmployeeSurname</td>
+                <td>
+                    <img src="@e.EmployeeImage" width="auto" height="75px"/>
+                </td>
+                <td>@e.Department.DepartmentName</td>
+                <td><a href="/Employee/EmployeeDelete/@e.EmployeeID" class="btn btn-danger">Sil</a></td>
+                <td><a href="/Employee/EmployeeGet/@e.EmployeeID" class="btn btn-success">Güncelle</a></td>
+                <td><a href="/Department/DepartmentEmployeeSales/@e.EmployeeID" class="btn btn-primary">Satışlar</a></td>
+            </tr>
+        }
+    </table>
+    @Html.PagedListPager(Model, page => Url.Action("Index", new {page}))
+}
+<a href="/Employee/EmployeeAdd/" class="btn btn-info">Personel Ekle</a>
+<a href="/Employee/EmployeeDetail/" class="btn btn-info">Detaylar</a>

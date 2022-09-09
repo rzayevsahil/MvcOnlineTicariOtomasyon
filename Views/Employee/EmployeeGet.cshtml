@@ -1,0 +1,34 @@
+﻿@model MvcOnlineTicariOtomasyon.Models.Classes.Employee
+@{
+    ViewBag.Title = "EmployeeGet";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<br />
+<h2>Personel Güncelle Sayfası</h2>
+<br />
+@using (Html.BeginForm("EmployeeUpdate", "Employee", FormMethod.Post,new { enctype = "multipart/form-data" }))
+{
+<div class="form-group">
+    @Html.HiddenFor(e => e.EmployeeID)
+    @Html.LabelFor(e => e.EmployeeName)
+    @Html.TextBoxFor(e => e.EmployeeName, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(e => e.EmployeeSurname)
+    @Html.TextBoxFor(e => e.EmployeeSurname, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(e => e.EmployeeImage)
+    <input type="file" name="EmployeeImage" />
+    <br />
+    @Html.LabelFor(e => e.Department)
+    @Html.DropDownListFor(e => e.DepartmentId, (List<SelectListItem>)ViewBag.val, new { @class = "form-control" })
+    <br />@Html.LabelFor(e => e.EmployeeAddress)
+    @Html.TextBoxFor(e => e.EmployeeAddress, new { @class = "form-control" })
+    <br />@Html.LabelFor(e => e.EmployeePhone)
+    @Html.TextBoxFor(e => e.EmployeePhone, new { @class = "form-control" })
+    <br />@Html.LabelFor(e => e.EmployeeAbout)
+    @Html.TextBoxFor(e => e.EmployeeAbout, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-warning">Güncelle</button>
+    <a style="background-color: crimson; color: white;" href="/Employee/Index/" class="btn btn-default">Geri</a>
+</div>
+}

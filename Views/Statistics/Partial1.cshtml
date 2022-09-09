@@ -1,0 +1,58 @@
+﻿@model IEnumerable<MvcOnlineTicariOtomasyon.Models.Classes.ClassGroup2>
+
+<!-- /.card -->
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Departman Personel Tablosu</h3>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body p-0">
+        <table class="table table-sm">
+            <thead>
+                <tr>
+                    <th style="width: 10px">#</th>
+                    <th>Departman</th>
+                    <th>İlerleme Çubuğu</th>
+                    <th style="width: 40px">Sayı</th>
+                </tr>
+            </thead>
+            <tbody>
+            
+            @{ int rowNumber = 0;}
+            @{ string property = "";}
+            @{ string property1 = "";}
+            @foreach (var x in Model)
+            {
+                <tr>
+                    <td>@{ rowNumber++;} @rowNumber</td>
+                    <td>@x.DepartmentName</td>
+                    <td>
+                        @if (x.Count == 1)
+                        {
+                            property = "progress-bar-danger";
+                            property1 = "bg-danger";
+                        }
+                        @if (x.Count == 2)
+                        {
+
+                            property = "bg-warning";
+                            property1 = "bg-warning";
+                        }
+                        @if (x.Count == 3)
+                        {
+                            property = "bg-success";
+                            property1 = "bg-success";
+                        }
+                        <div class="progress progress-xs">
+                            <div class="progress-bar @property" style="width: @x.Count.ToString()0%"></div>
+                        </div>
+                    </td>
+                    <td><span class="badge @property1">@x.Count</span></td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+    <!-- /.card-body -->
+</div>
+<!-- /.card -->
