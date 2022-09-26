@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+@{
+    var graphic = new Chart(width: 500, height: 500);
+    graphic.AddTitle(text: "Deneme");
+    graphic.AddLegend(title: "Değerler");
+    graphic.AddSeries(
+        name: "Veriler",
+        chartType:"Bar",
+        xValue: new[] { "Beyaz Eşya", "TV", "Bilgisayar" },
+        yValues: new[] { 50, 63, 99 });
+    graphic.Write();
+}

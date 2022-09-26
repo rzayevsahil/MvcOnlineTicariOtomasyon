@@ -53,6 +53,9 @@
       <HintPath>packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
       <HintPath>packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
     </Reference>
@@ -115,9 +118,6 @@
       <Private>True</Private>
       <HintPath>packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
@@ -143,6 +143,7 @@
     <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\GaleryController.cs" />
+    <Compile Include="Controllers\GraphicController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InvoiceController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -172,7 +173,9 @@
     <Compile Include="Models\Classes\Expense.cs" />
     <Compile Include="Models\Classes\Invoice.cs" />
     <Compile Include="Models\Classes\InvoicePen.cs" />
+    <Compile Include="Models\Classes\Message.cs" />
     <Compile Include="Models\Classes\Product.cs" />
+    <Compile Include="Models\Classes\ProductClass.cs" />
     <Compile Include="Models\Classes\SalesMovement.cs" />
     <Compile Include="Models\Classes\ToDo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -2254,6 +2257,8 @@
     <Content Include="Scripts\DataTables\responsive.jqueryui.min.js" />
     <Content Include="Scripts\DataTables\responsive.semanticui.js" />
     <Content Include="Scripts\DataTables\responsive.semanticui.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="thumber\bio.html" />
     <Content Include="thumber\contact.html" />
     <Content Include="thumber\css\aos.css" />
@@ -2683,7 +2688,6 @@
     <Content Include="AdminLTE-3.0.4\README.md" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
-    <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -2928,10 +2932,20 @@
     <Content Include="Views\QR\Index.cshtml" />
     <Content Include="Views\Cargo\CargoTrackingAdd.cshtml" />
     <Content Include="Views\Cargo\CargoTrackingUpdate.cshtml" />
+    <Content Include="Views\Graphic\Index.cshtml" />
+    <Content Include="Views\Graphic\Index2.cshtml" />
+    <Content Include="Views\Graphic\Index3.cshtml" />
+    <Content Include="Views\Graphic\GoogleChart1.cshtml" />
+    <Content Include="Views\Graphic\ProductGoogleChart.cshtml" />
+    <Content Include="Views\Graphic\ProductLineGoogleChart.cshtml" />
+    <Content Include="Views\ConcubinePanel\IncomingMessages.cshtml" />
+    <Content Include="Views\ConcubinePanel\OutgoingMessages.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Images\" />
+    <Folder Include="Views\ClassProduct\" />
+    <Folder Include="Views\Message\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
