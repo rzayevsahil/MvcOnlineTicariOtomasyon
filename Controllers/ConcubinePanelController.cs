@@ -53,7 +53,7 @@ namespace MvcOnlineTicariOtomasyon.Controllers
 
         public ActionResult MessageDetail(int id)
         {
-            var messageDetail = context.Messages.Where(x => x.MessageID == id).FirstOrDefault();
+            var messageDetail = context.Messages.Where(x => x.MessageID == id).ToList();
             var mail = Session["ConcubineMail"].ToString();
             var incomingMessages = context.Messages.Count(x => x.MessageRecipient == mail).ToString();
             ViewBag.incomingMessages = incomingMessages;
@@ -61,15 +61,15 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             ViewBag.outgoingingMessages = outgoingingMessages;
             return View(messageDetail);
         }
-        //[HttpGet]
-        //public ActionResult NewMessage()
-        //{
-        //    return View();
-        //}
-        //[HttpPost]
-        //public ActionResult NewMessage()
-        //{
-        //    return View();
-        //}
+        [HttpGet]
+        public ActionResult NewMessage()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult NewMessage()
+        {
+            return View();
+        }
     }
 }

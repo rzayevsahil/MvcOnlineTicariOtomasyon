@@ -2941,6 +2941,7 @@
     <Content Include="Views\ConcubinePanel\IncomingMessages.cshtml" />
     <Content Include="Views\ConcubinePanel\OutgoingMessages.cshtml" />
     <Content Include="Views\ConcubinePanel\MessageDetail.cshtml" />
+    <Content Include="Views\ConcubinePanel\NewMessage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
