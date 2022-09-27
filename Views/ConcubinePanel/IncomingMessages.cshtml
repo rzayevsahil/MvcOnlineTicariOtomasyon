@@ -178,9 +178,9 @@
                                                 </div>
                                             </td>
                                             <td class="mailbox-star"><a href="#"><i class="fas fa-star text-warning"></i></a></td>
-                                            <td class="mailbox-name"><a href="read-mail.html">@message.MessageSender</a></td>
+                                            <td class="mailbox-name"><a href="/ConcubinePanel/MessageDetail/@message.MessageID">@message.MessageSender</a></td>
                                             <td class="mailbox-subject">
-                                                <b>@message.MessageSubject</b> - @message.MessageContents.Substring(0,25)...
+                                                <b>@message.MessageSubject</b> - @message.MessageContents.Substring(0, 25)...
                                             </td>
                                             <td class="mailbox-attachment"></td>
                                             <td class="mailbox-date">@Convert.ToDateTime(DateTime.Now).Subtract(message.MessageDate).Days days @Convert.ToDateTime(DateTime.Now).Subtract(message.MessageDate).Hours hours @Convert.ToDateTime(DateTime.Now).Subtract(message.MessageDate).Minutes minutes ago</td>

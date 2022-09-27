@@ -2940,6 +2940,7 @@
     <Content Include="Views\Graphic\ProductLineGoogleChart.cshtml" />
     <Content Include="Views\ConcubinePanel\IncomingMessages.cshtml" />
     <Content Include="Views\ConcubinePanel\OutgoingMessages.cshtml" />
+    <Content Include="Views\ConcubinePanel\MessageDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
