@@ -177,11 +177,22 @@
                                             </td>
                                             <td class="mailbox-star"><a href="#"><i class="fas fa-star text-warning"></i></a></td>
                                             <td class="mailbox-name"><a href="/ConcubinePanel/MessageDetail/@message.MessageID">@message.MessageSender</a></td>
-                                            <td class="mailbox-subject">
-                                                <b>@message.MessageSubject</b> - @message.MessageContents.Substring(0, 25)...
-                                            </td>
+                                            @if (message.MessageContents.Length > 25)
+                                            {
+                                                <td class="mailbox-subject">
+                                                    <b>@message.MessageSubject</b> - @message.MessageContents.Substring(0, 25)...
+
+                                                </td>
+                                            }
+                                            else
+                                            {
+                                                <td class="mailbox-subject">
+                                                    <b>@message.MessageSubject</b> - @message.MessageContents
+
+                                                </td>
+                                            }
                                             <td class="mailbox-attachment"></td>
-                                            <td class="mailbox-date">@Convert.ToDateTime(DateTime.Now).Subtract(message.MessageDate).Days days @Convert.ToDateTime(DateTime.Now).Subtract(message.MessageDate).Hours hours @Convert.ToDateTime(DateTime.Now).Subtract(message.MessageDate).Minutes minutes ago</td>
+                                            <td class="mailbox-date">@message.MessageDate.ToString("HH:mm dd.MM.yyyy")</td>
                                         </tr>
                                     }
                                 </tbody>

@@ -33,7 +33,7 @@ namespace MvcOnlineTicariOtomasyon.Controllers
         public ActionResult IncomingMessages()
         {
             var mail = Session["ConcubineMail"].ToString();
-            var messages = context.Messages.Where(x => x.MessageRecipient == mail).ToList();
+            var messages = context.Messages.Where(x => x.MessageRecipient == mail).OrderByDescending(x=>x.MessageID).ToList();
             var incomingMessages = context.Messages.Count(x => x.MessageRecipient == mail).ToString();
             ViewBag.incomingMessages = incomingMessages;
             var outgoingingMessages = context.Messages.Count(x => x.MessageSender == mail).ToString();
@@ -43,7 +43,7 @@ namespace MvcOnlineTicariOtomasyon.Controllers
         public ActionResult OutgoingMessages()
         {
             var mail = Session["ConcubineMail"].ToString();
-            var messages = context.Messages.Where(x => x.MessageSender == mail).ToList();
+            var messages = context.Messages.Where(x => x.MessageSender == mail).OrderByDescending(x=>x.MessageID).ToList();
             var incomingMessages = context.Messages.Count(x => x.MessageRecipient == mail).ToString();
             ViewBag.incomingMessages = incomingMessages;
             var outgoingingMessages = context.Messages.Count(x => x.MessageSender == mail).ToString();
@@ -61,6 +61,7 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             ViewBag.outgoingingMessages = outgoingingMessages;
             return View(messageDetail);
         }
+
         [HttpGet]
         public ActionResult NewMessage()
         {
@@ -74,6 +75,11 @@ namespace MvcOnlineTicariOtomasyon.Controllers
         [HttpPost]
         public ActionResult NewMessage(Message message)
         {
+            var mail = Session["ConcubineMail"].ToString();
+            message.MessageDate = DateTime.Parse(DateTime.Now.ToString());
+            message.MessageSender = mail;
+            context.Messages.Add(message);
+            context.SaveChanges();
             return View();
         }
     }
