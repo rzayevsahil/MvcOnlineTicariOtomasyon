@@ -179,7 +179,7 @@
                                             </td>
                                             <td class="mailbox-star"><a href="#"><i class="fas fa-star text-warning"></i></a></td>
                                             <td class="mailbox-name"><a href="/ConcubinePanel/MessageDetail/@message.MessageID">@message.MessageRecipient</a></td>
-                                            @if (message.MessageContents.Length > 25)
+                                            @if (message.MessageContents?.Length > 25)
                                             {
                                                 <td class="mailbox-subject">
                                                     <b>@message.MessageSubject</b> - @message.MessageContents.Substring(0,25)...

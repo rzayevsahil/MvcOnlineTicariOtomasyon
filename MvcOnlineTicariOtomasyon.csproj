@@ -2942,6 +2942,7 @@
     <Content Include="Views\ConcubinePanel\OutgoingMessages.cshtml" />
     <Content Include="Views\ConcubinePanel\MessageDetail.cshtml" />
     <Content Include="Views\ConcubinePanel\NewMessage.cshtml" />
+    <Content Include="Views\ConcubinePanel\CargoTracking.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

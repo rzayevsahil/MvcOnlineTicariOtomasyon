@@ -40,7 +40,7 @@
             <div class="row">
 
                 <div class="col-md-3">
-                    <a href="compose.html" class="btn btn-primary btn-block mb-3">Yeni Mesaj Oluştur</a>
+                    <a href="/ConcubinePanel/IncomingMessages/" class="btn btn-primary btn-block mb-3">Mesajlara Geri Dön</a>
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">Klasörler</h3>
@@ -138,7 +138,7 @@
                                 <div class="mailbox-read-info">
                                     <h5>Konu: @m.MessageSubject</h5>
                                     <h6>
-                                        Kimden: @m.MessageSender
+                                        @ViewBag.value
                                         <span class="mailbox-read-time float-right">@m.MessageDate.ToShortDateString()</span>
                                     </h6>
                                 </div>
