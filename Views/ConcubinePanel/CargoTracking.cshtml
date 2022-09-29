@@ -7,33 +7,39 @@
 }
 
 <br />
-@using (Html.BeginForm("Index", "Cargo", FormMethod.Get))
+@if (ViewBag.cargoCount)
 {
-    <p>
-        Kargo Takip Numarası : @Html.TextBox("p", null, new { @placeholder = "Ara" })
-        <input type="submit" value="Ara" placeholder="Takip kodu giriniz..." />
-    </p>
-}
-<table class="table table-bordered" style="margin-top: 20px">
-    <tr>
-        <th>Personel</th>
-        <th>Alıcı</th>
-        <th>Takip Kodu</th>
-        <th>Tarih</th>
-        <th>Detaylar</th>
-    </tr>
-    @foreach (var c in Model)
+    using (Html.BeginForm("CargoTracking", "ConcubinePanel", FormMethod.Get))
     {
-        <tr>
-            <td>@c.Employee</td>
-            <td>@c.Receiver</td>
-            <td>@c.TrackingCode</td>
-            <td>@c.Date.ToShortDateString()</td>
-            <td>
-                <a href="/Cargo/CargoTracking/@c.TrackingCode" class="btn btn-primary">Detaylar</a>
-            </td>
-        </tr>
+        <p>
+            Kargo Takip Numarası : @Html.TextBox("p", null, new { @placeholder = "Ara" })
+            <input type="submit" value="Ara" placeholder="Takip kodu giriniz..." />
+        </p>
     }
-</table>
-@Html.PagedListPager(Model, page => Url.Action("Index", new { page }), new PagedListRenderOptions { LinkToFirstPageFormat = "<< İlk", LinkToPreviousPageFormat = "< Önceki", LinkToNextPageFormat = "Sonraki >", LinkToLastPageFormat = "Son >>" })
-@*<a href="/Cargo/CargoAdd/" class="btn btn-info">Yeni Kargo Girişi</a>*@
+    <table class="table table-bordered" style="margin-top: 20px">
+        <tr>
+            <th>Personel</th>
+            <th>Alıcı</th>
+            <th>Takip Kodu</th>
+            <th>Tarih</th>
+            <th>Detaylar</th>
+        </tr>
+        @foreach (var c in Model)
+        {
+            <tr>
+                <td>@c.Employee</td>
+                <td>@c.Receiver</td>
+                <td>@c.TrackingCode</td>
+                <td>@c.Date.ToShortDateString()</td>
+                <td>
+                    <a href="/ConcubinePanel/CargoTrackingFindID/@c.TrackingCode" class="btn btn-primary">Detaylar</a>
+                </td>
+            </tr>
+        }
+    </table>
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), new PagedListRenderOptions { LinkToFirstPageFormat = "<< İlk", LinkToPreviousPageFormat = "< Önceki", LinkToNextPageFormat = "Sonraki >", LinkToLastPageFormat = "Son >>" })
+}
+else
+{
+    <div style="text-align: center; margin-top: 10vh;"><h1 style="color: blueviolet">Kargonuz mevcut değil</h1></div>
+}

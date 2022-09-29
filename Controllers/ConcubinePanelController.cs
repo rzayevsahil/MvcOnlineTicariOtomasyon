@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using System.Web.Services.Description;
 using System.Web.UI;
 using MvcOnlineTicariOtomasyon.Models.Classes;
@@ -20,11 +21,19 @@ namespace MvcOnlineTicariOtomasyon.Controllers
         {
             //var mail = (string) Session["ConcubineMail"];
             var mail = Session["ConcubineMail"].ToString();
-            var values = context.Concubines.FirstOrDefault(x => x.ConcubineMail == mail);
+            var values = context.Concubines.Where(x => x.ConcubineMail == mail).ToList();
             ViewBag.mail = mail;
+            var mailID = context.Concubines.Where(x => x.ConcubineMail == mail).Select(y => y.ConcubineID).FirstOrDefault();
+            var totalSales = context.SalesMovements.Where(x => x.ConcubineId == mailID).Count();
+            ViewBag.totalSales = totalSales;
+            var totalAmount = context.SalesMovements.Where(x => x.ConcubineId == mailID).Sum(x => x.TotalAmount);
+            ViewBag.totalAmount = totalAmount;
+            var totalProductCount = context.SalesMovements.Where(x => x.ConcubineId == mailID).Sum(x => x.Piece);
+            ViewBag.totalProductCount = totalProductCount;
             return View(values);
         }
 
+        [Authorize]
         public ActionResult MyOrders()
         {
             var mail = Session["ConcubineMail"].ToString();
@@ -34,6 +43,7 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             return View(values);
         }
 
+        [Authorize]
         public ActionResult IncomingMessages()
         {
             var mail = Session["ConcubineMail"].ToString();
@@ -44,6 +54,8 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             ViewBag.outgoingingMessages = outgoingingMessages;
             return View(messages);
         }
+
+        [Authorize]
         public ActionResult OutgoingMessages()
         {
             var mail = Session["ConcubineMail"].ToString();
@@ -55,6 +67,7 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             return View(messages);
         }
 
+        [Authorize]
         public ActionResult MessageDetail(int id)
         {
             var messageDetail = context.Messages.Where(x => x.MessageID == id).ToList();
@@ -77,6 +90,7 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             return View(messageDetail);
         }
 
+        [Authorize]
         [HttpGet]
         public ActionResult NewMessage()
         {
@@ -100,14 +114,42 @@ namespace MvcOnlineTicariOtomasyon.Controllers
 
         public ActionResult CargoTracking(string p, int page = 1)
         {
+            var mail = Session["ConcubineMail"].ToString();
+            var concubine = context.Concubines.FirstOrDefault(x => x.ConcubineMail == mail);
+            var concubineCargoList = context.Concubines.FirstOrDefault(x => (x.ConcubineName.ToUpper() + " " + x.ConcubineSurname.ToUpper()) == (concubine.ConcubineName.ToUpper() + " " + concubine.ConcubineSurname.ToUpper()));
             var values = from x in context.CargoDetails select x;
+            var cargoCount = values.Where(x => x.Employee.ToUpper() == concubineCargoList.ConcubineName.ToUpper() + " " + concubineCargoList.ConcubineSurname.ToUpper()).ToList().ToPagedList(page, 5).Count();
+            if (cargoCount == 0)
+            {
+                ViewBag.cargoCount = false;
+            }
+            else
+            {
+                ViewBag.cargoCount = true;
+            }
+
             if (!string.IsNullOrEmpty(p))
             {
                 values = values.Where(x => x.TrackingCode.Contains(p));
             }
 
-            var cargoes = values.ToList().ToPagedList(page, 5);
+            var cargoes = values.Where(x => x.Employee.ToUpper() == concubineCargoList.ConcubineName.ToUpper() + " " + concubineCargoList.ConcubineSurname.ToUpper()).ToList().ToPagedList(page, 5);
+            ViewBag.cgl = concubine.ConcubineName.ToUpper() + " " + concubine.ConcubineSurname.ToUpper() + concubineCargoList;
             return View(cargoes);
+        }
+
+        public ActionResult CargoTrackingFindID(string id)
+        {
+            var values = context.CargoTrackings.Where(x => x.TrackingCode == id).ToList();
+            ViewBag.trackingCode = id;
+            return View(values);
+        }
+
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            Session.Abandon();
+            return RedirectToAction("Index", "Login");
         }
     }
 }

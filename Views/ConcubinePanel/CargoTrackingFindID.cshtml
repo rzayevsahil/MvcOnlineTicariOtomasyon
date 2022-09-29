@@ -1,0 +1,28 @@
+﻿@using MvcOnlineTicariOtomasyon.Models.Classes
+@model List<CargoTracking>
+@{
+    ViewBag.Title = "CargoTrackingFindID";
+    Layout = "~/Views/Shared/_ConcubineLayout.cshtml";
+}
+
+<br />
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Kargo Takip Numarası: <b>@ViewBag.trackingCode</b></li>
+</ol>
+<table class="table table-striped">
+    <tr>
+        <th>#</th>
+        <th>Açıklama</th>
+        <th>Tarih</th>
+    </tr>
+    @{ int rowNumber = 0;}
+    @foreach (var c in Model)
+    {
+        <tr>
+            <td>@{ rowNumber++;} @rowNumber</td>
+            <td>@c.Explanation</td>
+            <td>@c.Datetime.ToString("dd.MM.yyyy HH:mm")</td>
+        </tr>
+    }
+</table>
+<a href="/ConcubinePanel/CargoTracking/" class="btn btn-info" style="border-color: blueviolet;background-color: blueviolet">Geri</a>
