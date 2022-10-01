@@ -21,7 +21,7 @@ namespace MvcOnlineTicariOtomasyon.Controllers
         {
             //var mail = (string) Session["ConcubineMail"];
             var mail = Session["ConcubineMail"].ToString();
-            var values = context.Concubines.Where(x => x.ConcubineMail == mail).ToList();
+            var values = context.Messages.Where(x => x.MessageRecipient == mail).ToList();
             ViewBag.mail = mail;
             var mailID = context.Concubines.Where(x => x.ConcubineMail == mail).Select(y => y.ConcubineID).FirstOrDefault();
             var totalSales = context.SalesMovements.Where(x => x.ConcubineId == mailID).Count();
@@ -30,6 +30,12 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             ViewBag.totalAmount = totalAmount;
             var totalProductCount = context.SalesMovements.Where(x => x.ConcubineId == mailID).Sum(x => x.Piece);
             ViewBag.totalProductCount = totalProductCount;
+            var nameSurname = context.Concubines.Where(x => x.ConcubineMail == mail)
+                .Select(x => x.ConcubineName + " " + x.ConcubineSurname).FirstOrDefault();
+            ViewBag.nameSurname = nameSurname;
+            var city = context.Concubines.Where(x => x.ConcubineMail == mail)
+                .Select(x => x.ConcubineCity).FirstOrDefault();
+            ViewBag.city = city;
             return View(values);
         }
 
@@ -150,6 +156,20 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             FormsAuthentication.SignOut();
             Session.Abandon();
             return RedirectToAction("Index", "Login");
+        }
+
+        public PartialViewResult PartialEditProfile()
+        {
+            var mail = Session["ConcubineMail"].ToString();
+            var id = context.Concubines.Where(x => x.ConcubineMail == mail).Select(y => y.ConcubineID).FirstOrDefault();
+            var concubine = context.Concubines.Find(id);
+            return PartialView("PartialEditProfile", concubine);
+        }
+
+        public PartialViewResult PartialAnnouncements()
+        {
+            var announcements = context.Messages.Where(x => x.MessageSender == "admin").ToList();
+            return PartialView(announcements);
         }
     }
 }

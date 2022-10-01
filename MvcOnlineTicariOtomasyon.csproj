@@ -2944,6 +2944,8 @@
     <Content Include="Views\ConcubinePanel\NewMessage.cshtml" />
     <Content Include="Views\ConcubinePanel\CargoTracking.cshtml" />
     <Content Include="Views\ConcubinePanel\CargoTrackingFindID.cshtml" />
+    <Content Include="Views\ConcubinePanel\PartialEditProfile.cshtml" />
+    <Content Include="Views\ConcubinePanel\PartialAnnouncements.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
