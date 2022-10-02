@@ -163,6 +163,7 @@
     <Compile Include="Models\Classes\CargoTracking.cs" />
     <Compile Include="Models\Classes\Category.cs" />
     <Compile Include="Models\Classes\Class1.cs" />
+    <Compile Include="Models\Classes\Class2.cs" />
     <Compile Include="Models\Classes\ClassGroup.cs" />
     <Compile Include="Models\Classes\ClassGroup2.cs" />
     <Compile Include="Models\Classes\ClassGroup3.cs" />
@@ -2948,6 +2949,7 @@
     <Content Include="Views\ConcubinePanel\PartialEditProfile.cshtml" />
     <Content Include="Views\ConcubinePanel\PartialAnnouncements.cshtml" />
     <Content Include="Views\Error\PageError.cshtml" />
+    <Content Include="Views\Category\Attempt.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
