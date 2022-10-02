@@ -64,7 +64,7 @@
                                         <b>Toplam Ürün Sayısı</b> <a class="float-right">@ViewBag.totalProductCount</a>
                                     </li>
                                 </ul>
-                                <a href="#" class="btn btn-primary btn-block"><b>Kargo Takip</b></a>
+                                <a href="/ConcubinePanel/CargoTracking/" class="btn btn-primary btn-block"><b>Kargo Takip</b></a>
                             </div>
                             <!-- /.card-body -->
                         </div>
@@ -88,7 +88,7 @@
                                 <p class="text-muted">(555) 555 55 55</p>
                                 <hr>
                                 <strong><i class="far fa-file-alt mr-1"></i> Duyurular</strong>
-                                <p class="text-muted">Yeni ürünlerimiz için web sitemizi ziyaret edin.</p>
+                                <p class="text-muted">@ViewBag.lastAnnouncement</p>
                             </div>
                             <!-- /.card-body -->
                         </div>
@@ -100,7 +100,7 @@
                             <div class="card-header p-2">
                                 <ul class="nav nav-pills">
                                     <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Mesajlar</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">Timeline</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">Duyurular</a></li>
                                     <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Ayarlar</a></li>
                                 </ul>
                             </div><!-- /.card-header -->
@@ -114,7 +114,7 @@
                                                 <div class="user-block">
                                                     <img class="img-circle img-bordered-sm" src="~/AdminLTE-3.0.4/dist/img/user1-128x128.jpg" alt="user image">
                                                     <span class="username">
-                                                        <a href="#">@x.MessageSender</a>
+                                                        <a href="#" style="pointer-events: none">@x.MessageSender</a>
                                                         <a href="#" class="float-right btn-tool"><i class="fas fa-times"></i></a>
                                                     </span>
                                                     <span class="description">@x.MessageSubject - @x.MessageDate.ToShortDateString()</span>
@@ -152,11 +152,7 @@
     </div>
     <!-- /.content-wrapper -->
     <footer class="main-footer">
-        <div class="float-right d-none d-sm-block">
-            <b>Version</b> 3.0.4
-        </div>
-        <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
-        reserved.
+        <strong>Copyright &copy; 2022 <a href="http://adminlte.io">Sahil Rzayev</a>.</strong> Tüm Haklar Saklıdır.
     </footer>
     <!-- Control Sidebar -->
     <aside class="control-sidebar control-sidebar-dark">

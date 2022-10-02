@@ -1,43 +1,45 @@
 ﻿@model MvcOnlineTicariOtomasyon.Models.Classes.Concubine
 
-@using (Html.BeginForm("PartialEditProfile", "ConcubinePanel", FormMethod.Post))
+@using (Html.BeginForm("ConcubineInfoUpdate", "ConcubinePanel", FormMethod.Post))
 {
     <form class="form-horizontal">
+        @Html.HiddenFor(x=>x.ConcubineID)
         <div class="form-group row">
             <label for="inputName" class="col-sm-2 col-form-label">Ad</label>
             <div class="col-sm-10">
-                @Html.TextBoxFor(x => x.ConcubineName, new { @class = "form-control" })
+                @Html.TextBoxFor(x => x.ConcubineName, new {@class = "form-control"})
             </div>
         </div>
         <div class="form-group row">
             <label for="inputEmail" class="col-sm-2 col-form-label">Soyad</label>
             <div class="col-sm-10">
-                @Html.TextBoxFor(x => x.ConcubineSurname, new { @class = "form-control" })
+                @Html.TextBoxFor(x => x.ConcubineSurname, new {@class = "form-control"})
             </div>
         </div>
         <div class="form-group row">
             <label for="inputName2" class="col-sm-2 col-form-label">Mail Adresi</label>
             <div class="col-sm-10">
-                @Html.TextBoxFor(x => x.ConcubineMail, new { @class = "form-control" })
+                @Html.TextBoxFor(x => x.ConcubineMail, new {@class = "form-control"})
             </div>
         </div>
         <div class="form-group row">
             <label for="inputExperience" class="col-sm-2 col-form-label">Şehir</label>
             <div class="col-sm-10">
-                @Html.TextBoxFor(x => x.ConcubineCity, new { @class = "form-control" })
+                @Html.TextBoxFor(x => x.ConcubineCity, new {@class = "form-control"})
             </div>
         </div>
         <div class="form-group row">
             <label for="inputSkills" class="col-sm-2 col-form-label">Şifre</label>
             <div class="col-sm-10">
-                @Html.TextBoxFor(x => x.ConcubinePassword, new { @class = "form-control", @type = "password" })
+                @Html.TextBoxFor(x => x.ConcubinePassword, new {@class = "form-control", @type = "password", @id = "myInput"})
+                <input style="margin-top: 10px" type="checkbox" onclick="showPassword()"> Şifreyi Göster
             </div>
         </div>
         <div class="form-group row">
             <div class="offset-sm-2 col-sm-10">
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox"> Bilgileri okudum, <a href="#">şifre değiştirme şartlarını kabul ediyorum.</a>
+                        <input type="checkbox"> Bilgilerimin doğru olduğunu kabul edip onaylamak istiyorum.
                     </label>
                 </div>
             </div>
@@ -49,3 +51,13 @@
         </div>
     </form>
 }
+<script>
+    function showPassword() {
+        var x = document.getElementById("myInput");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+    }
+</script>

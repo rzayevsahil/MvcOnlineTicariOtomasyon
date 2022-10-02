@@ -5,7 +5,7 @@
     <div class="timeline timeline-inverse">
         <!-- timeline time label -->
         <div class="time-label">
-            <span class="bg-danger">
+            <span class="bg-warning">
                 @x.MessageDate.ToString("dd/MM/yyyy")
             </span>
         </div>
@@ -14,15 +14,11 @@
         <div>
             <i class="fas fa-envelope bg-primary"></i>
             <div class="timeline-item">
-                <span class="time"><i class="far fa-clock"></i>@x.MessageDate.ToString("HH:mm")</span>
-                <h3 class="timeline-header"><a href="#">@x.MessageSender</a> - <b>@x.MessageSubject</b></h3>
+                <span class="time"><i class="far fa-clock"></i> @x.MessageDate.ToString("HH:mm")</span>
+                <h3 class="timeline-header"><a href="#" style="pointer-events: none">@x.MessageSubject</a></h3>
                 <div class="timeline-body">
                     @x.MessageContents
                 </div>
-                @*<div class="timeline-footer">
-                    <a href="#" class="btn btn-primary btn-sm">Read more</a>
-                    <a href="#" class="btn btn-danger btn-sm">Delete</a>
-                </div>*@
             </div>
         </div>
         <!-- END timeline item -->

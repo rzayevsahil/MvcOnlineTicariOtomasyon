@@ -36,6 +36,8 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             var city = context.Concubines.Where(x => x.ConcubineMail == mail)
                 .Select(x => x.ConcubineCity).FirstOrDefault();
             ViewBag.city = city;
+            var lastAnnouncement = context.Messages.Where(x => x.MessageSender == "admin").ToList().Last().MessageContents;
+            ViewBag.lastAnnouncement = lastAnnouncement;
             return View(values);
         }
 
@@ -168,8 +170,20 @@ namespace MvcOnlineTicariOtomasyon.Controllers
 
         public PartialViewResult PartialAnnouncements()
         {
-            var announcements = context.Messages.Where(x => x.MessageSender == "admin").ToList();
+            var announcements = context.Messages.Where(x => x.MessageSender == "admin").OrderByDescending(x => x.MessageID).ToList();
             return PartialView(announcements);
+        }
+
+        public ActionResult ConcubineInfoUpdate(Concubine concubine)
+        {
+            var _concubine = context.Concubines.Find(concubine.ConcubineID);
+            _concubine.ConcubineName = concubine.ConcubineName;
+            _concubine.ConcubineSurname = concubine.ConcubineSurname;
+            _concubine.ConcubineMail = concubine.ConcubineMail;
+            _concubine.ConcubineCity = concubine.ConcubineCity;
+            _concubine.ConcubinePassword = concubine.ConcubinePassword;
+            context.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }
