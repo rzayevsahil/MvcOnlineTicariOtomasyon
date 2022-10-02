@@ -142,6 +142,7 @@
     <Compile Include="Controllers\ConcubinePanelController.cs" />
     <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\GaleryController.cs" />
     <Compile Include="Controllers\GraphicController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -2946,6 +2947,7 @@
     <Content Include="Views\ConcubinePanel\CargoTrackingFindID.cshtml" />
     <Content Include="Views\ConcubinePanel\PartialEditProfile.cshtml" />
     <Content Include="Views\ConcubinePanel\PartialAnnouncements.cshtml" />
+    <Content Include="Views\Error\PageError.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
