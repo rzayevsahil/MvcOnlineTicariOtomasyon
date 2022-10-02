@@ -9,6 +9,7 @@ using PagedList;
 
 namespace MvcOnlineTicariOtomasyon.Controllers
 {
+    [Authorize]
     public class EmployeeController : Controller
     {
         // GET: Employee

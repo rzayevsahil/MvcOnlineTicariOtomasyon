@@ -10,6 +10,7 @@ using QRCoder;
 
 namespace MvcOnlineTicariOtomasyon.Controllers
 {
+    [Authorize]
     public class QRController : Controller
     {
         // GET: QR

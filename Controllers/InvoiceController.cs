@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using MvcOnlineTicariOtomasyon.Models.Classes;
 namespace MvcOnlineTicariOtomasyon.Controllers
 {
+    [Authorize]
     public class InvoiceController : Controller
     {
         // GET: Invoice

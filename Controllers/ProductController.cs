@@ -10,6 +10,7 @@ using PagedList;
 
 namespace MvcOnlineTicariOtomasyon.Controllers
 {
+    [Authorize]
     public class ProductController : Controller
     {
         // GET: Product

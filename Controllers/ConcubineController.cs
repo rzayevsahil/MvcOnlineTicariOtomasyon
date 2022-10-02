@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using MvcOnlineTicariOtomasyon.Models.Classes;
 namespace MvcOnlineTicariOtomasyon.Controllers
 {
+    [Authorize]
     public class ConcubineController : Controller
     {
         // GET: Concubine

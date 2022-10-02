@@ -12,11 +12,11 @@ using Message = MvcOnlineTicariOtomasyon.Models.Classes.Message;
 
 namespace MvcOnlineTicariOtomasyon.Controllers
 {
+    [Authorize]
     public class ConcubinePanelController : Controller
     {
         // GET: ConcubinePanel
         private Context context = new Context();
-        [Authorize]
         public ActionResult Index()
         {
             //var mail = (string) Session["ConcubineMail"];
@@ -41,7 +41,6 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             return View(values);
         }
 
-        [Authorize]
         public ActionResult MyOrders()
         {
             var mail = Session["ConcubineMail"].ToString();
@@ -51,7 +50,6 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             return View(values);
         }
 
-        [Authorize]
         public ActionResult IncomingMessages()
         {
             var mail = Session["ConcubineMail"].ToString();
@@ -75,7 +73,6 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             return View(messages);
         }
 
-        [Authorize]
         public ActionResult MessageDetail(int id)
         {
             var messageDetail = context.Messages.Where(x => x.MessageID == id).ToList();
@@ -98,7 +95,6 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             return View(messageDetail);
         }
 
-        [Authorize]
         [HttpGet]
         public ActionResult NewMessage()
         {
