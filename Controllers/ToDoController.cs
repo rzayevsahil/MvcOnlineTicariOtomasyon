@@ -8,7 +8,6 @@ using Newtonsoft.Json;
 
 namespace MvcOnlineTicariOtomasyon.Controllers
 {
-    [Authorize]
     public class ToDoController : Controller
     {
         // GET: ToDo

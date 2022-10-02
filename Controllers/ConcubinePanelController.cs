@@ -12,7 +12,6 @@ using Message = MvcOnlineTicariOtomasyon.Models.Classes.Message;
 
 namespace MvcOnlineTicariOtomasyon.Controllers
 {
-    [Authorize]
     public class ConcubinePanelController : Controller
     {
         // GET: ConcubinePanel

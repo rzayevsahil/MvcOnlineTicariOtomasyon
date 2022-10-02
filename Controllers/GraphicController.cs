@@ -9,7 +9,6 @@ using MvcOnlineTicariOtomasyon.Models.Classes;
 
 namespace MvcOnlineTicariOtomasyon.Controllers
 {
-    [Authorize]
     public class GraphicController : Controller
     {
         // GET: Graphic

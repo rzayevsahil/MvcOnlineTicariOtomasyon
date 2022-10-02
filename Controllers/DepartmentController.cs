@@ -8,7 +8,6 @@ using PagedList;
 
 namespace MvcOnlineTicariOtomasyon.Controllers
 {
-    [Authorize]
     public class DepartmentController : Controller
     {
         // GET: Department

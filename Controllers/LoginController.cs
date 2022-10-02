@@ -8,10 +8,11 @@ using MvcOnlineTicariOtomasyon.Models.Classes;
 
 namespace MvcOnlineTicariOtomasyon.Controllers
 {
+    [AllowAnonymous]
     public class LoginController : Controller
     {
         // GET: Login
-        private Context context = new Context();
+        Context context = new Context();
         public ActionResult Index()
         {
             return View();

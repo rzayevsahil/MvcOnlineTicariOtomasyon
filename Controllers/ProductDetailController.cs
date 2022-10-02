@@ -7,7 +7,6 @@ using MvcOnlineTicariOtomasyon.Models.Classes;
 
 namespace MvcOnlineTicariOtomasyon.Controllers
 {
-    [Authorize]
     public class ProductDetailController : Controller
     {
         // GET: ProductDetail

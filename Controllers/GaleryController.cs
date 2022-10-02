@@ -6,7 +6,6 @@ using System.Web.Mvc;
 using MvcOnlineTicariOtomasyon.Models.Classes;
 namespace MvcOnlineTicariOtomasyon.Controllers
 {
-    [Authorize]
     public class GaleryController : Controller
     {
         // GET: Galery

@@ -8,7 +8,6 @@ using WebGrease.Css.Ast.Selectors;
 
 namespace MvcOnlineTicariOtomasyon.Controllers
 {
-    [Authorize]
     public class StatisticsController : Controller
     {
         // GET: Statistics
