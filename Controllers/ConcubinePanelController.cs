@@ -23,12 +23,22 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             var values = context.Messages.Where(x => x.MessageRecipient == mail).ToList();
             ViewBag.mail = mail;
             var mailID = context.Concubines.Where(x => x.ConcubineMail == mail).Select(y => y.ConcubineID).FirstOrDefault();
-            var totalSales = context.SalesMovements.Where(x => x.ConcubineId == mailID).Count();
-            ViewBag.totalSales = totalSales;
-            var totalAmount = context.SalesMovements.Where(x => x.ConcubineId == mailID).Sum(x => x.TotalAmount);
-            ViewBag.totalAmount = totalAmount;
-            var totalProductCount = context.SalesMovements.Where(x => x.ConcubineId == mailID).Sum(x => x.Piece);
-            ViewBag.totalProductCount = totalProductCount;
+            
+            if (context.SalesMovements?.Where(x => x.ConcubineId == mailID)?.Count() > 0)
+            {
+                var totalSales = context.SalesMovements.Where(x => x.ConcubineId == mailID)?.Count();
+                var totalAmount = context.SalesMovements.Where(x => x.ConcubineId == mailID)?.Sum(x => x.TotalAmount);
+                var totalProductCount = context.SalesMovements.Where(x => x.ConcubineId == mailID)?.Sum(x => x.Piece);
+                ViewBag.totalSales = totalSales;
+                ViewBag.totalAmount = totalAmount;
+                ViewBag.totalProductCount = totalProductCount;
+            }
+            else
+            {
+                ViewBag.totalSales = 0;
+                ViewBag.totalAmount = 0;
+                ViewBag.totalProductCount = 0;
+            }
             var nameSurname = context.Concubines.Where(x => x.ConcubineMail == mail)
                 .Select(x => x.ConcubineName + " " + x.ConcubineSurname).FirstOrDefault();
             ViewBag.nameSurname = nameSurname;
