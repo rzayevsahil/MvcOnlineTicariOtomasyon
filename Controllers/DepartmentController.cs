@@ -23,7 +23,7 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             var departments = values.ToList().ToPagedList(page, 5);
             return View(departments);
         }
-        [Authorize(Roles = "A")]
+        //[Authorize(Roles = "A")]
         [HttpGet]
         public ActionResult DepartmentAdd()
         {
