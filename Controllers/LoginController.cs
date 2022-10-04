@@ -25,6 +25,7 @@ namespace MvcOnlineTicariOtomasyon.Controllers
         [HttpPost]
         public PartialViewResult ConcubineRegister(Concubine concubine)
         {
+            concubine.Situation = true;
             context.Concubines.Add(concubine);
             context.SaveChanges();
             return PartialView();
