@@ -166,35 +166,42 @@
                         <div class="table-responsive mailbox-messages">
                             <table class="table table-hover table-striped">
                                 <tbody>
-                                    @foreach (var message in Model)
-                                    {
-                                        <tr>
-                                            <td>
-                                                <div class="icheck-primary">
-                                                    <input type="checkbox" value="" id="check1">
-                                                    <label for="check1"></label>
-                                                </div>
+                                @if (Model.Count == 0)
+                                {
+                                    <h2 style="font-weight: bold; text-align: center; color: cadetblue">Mesajınız mevcut değil</h2>
+                                }
+                                else
+                                {
+                                foreach (var message in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            <div class="icheck-primary">
+                                                <input type="checkbox" value="" id="check1">
+                                                <label for="check1"></label>
+                                            </div>
+                                        </td>
+                                        <td class="mailbox-star"><a href="#"><i class="fas fa-star text-warning"></i></a></td>
+                                        <td class="mailbox-name"><a href="/ConcubinePanel/MessageDetail/@message.MessageID">@message.MessageSender</a></td>
+                                        @if (message.MessageContents.Length > 25)
+                                        {
+                                            <td class="mailbox-subject">
+                                                <b>@message.MessageSubject</b> - @message.MessageContents.Substring(0, 25)...
+
                                             </td>
-                                            <td class="mailbox-star"><a href="#"><i class="fas fa-star text-warning"></i></a></td>
-                                            <td class="mailbox-name"><a href="/ConcubinePanel/MessageDetail/@message.MessageID">@message.MessageSender</a></td>
-                                            @if (message.MessageContents.Length > 25)
-                                            {
-                                                <td class="mailbox-subject">
-                                                    <b>@message.MessageSubject</b> - @message.MessageContents.Substring(0, 25)...
+                                        }
+                                        else
+                                        {
+                                            <td class="mailbox-subject">
+                                                <b>@message.MessageSubject</b> - @message.MessageContents
 
-                                                </td>
-                                            }
-                                            else
-                                            {
-                                                <td class="mailbox-subject">
-                                                    <b>@message.MessageSubject</b> - @message.MessageContents
-
-                                                </td>
-                                            }
-                                            <td class="mailbox-attachment"></td>
-                                            <td class="mailbox-date">@message.MessageDate.ToString("HH:mm dd.MM.yyyy")</td>
-                                        </tr>
-                                    }
+                                            </td>
+                                        }
+                                        <td class="mailbox-attachment"></td>
+                                        <td class="mailbox-date">@message.MessageDate.ToString("HH:mm dd.MM.yyyy")</td>
+                                    </tr>
+                                }
+                                }
                                 </tbody>
                             </table>
                             <!-- /.table -->
