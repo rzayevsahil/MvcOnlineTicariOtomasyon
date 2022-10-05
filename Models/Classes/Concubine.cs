@@ -33,6 +33,7 @@ namespace MvcOnlineTicariOtomasyon.Models.Classes
 
         [Column(TypeName = "Varchar")]
         [StringLength(50)]
+        //[Index("ConcubineMail", IsUnique = true)]
         public string ConcubineMail { get; set; }
 
         [Column(TypeName = "Varchar")]

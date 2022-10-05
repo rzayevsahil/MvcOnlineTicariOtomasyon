@@ -6,12 +6,12 @@
                 <input type="text" class="name" name="ConcubineName" Placeholder="Adınız" required="" />
                 <input type="text" class="name" name="ConcubineSurname" Placeholder="Soyadınız" required="" />
                 <input type="text" class="name" name="ConcubineCity" Placeholder="Şehir" required="" />
-                <input type="email" class="email" name="ConcubineMail" Placeholder="Mail Adresiniz" required="" />
+                <input id="ConcubineMail" type="email" class="email" name="ConcubineMail" Placeholder="Mail Adresiniz" required="" />
                 <input type="password" class="password" name="ConcubinePassword" Placeholder="Şifre" required="" />
                 <div class="login-check">
                     <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i> Kuralları okudum &amp; Kabul Ediyorum</label>
                 </div>
-                <input type="submit" value="Kaydol">
+                <input type="submit" value="Kaydol" onclick="save()">
             </form>
         </div>
     </div>

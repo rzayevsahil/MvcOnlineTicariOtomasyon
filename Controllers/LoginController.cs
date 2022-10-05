@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using Microsoft.Graph;
 using MvcOnlineTicariOtomasyon.Models.Classes;
+using Admin = MvcOnlineTicariOtomasyon.Models.Classes.Admin;
 
 namespace MvcOnlineTicariOtomasyon.Controllers
 {
