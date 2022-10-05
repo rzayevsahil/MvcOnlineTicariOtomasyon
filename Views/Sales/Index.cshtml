@@ -42,7 +42,7 @@ else
                     <td>@s.Piece</td>
                     <td>@s.Price ₺</td>
                     <td>@s.TotalAmount ₺</td>
-                    <td>@s.Date</td>
+                    <td>@s.Date.ToShortDateString()</td>
                     <td><a href="/Sales/SalesDelete/@s.SalesID" class="btn btn-danger">Sil</a></td>
                     <td><a href="/Sales/SalesGet/@s.SalesID" class="btn btn-success">Güncelle</a></td>
                     <td><a href="/Sales/SalesDetail/@s.SalesID" class="btn btn-primary">Detaylar</a></td>
