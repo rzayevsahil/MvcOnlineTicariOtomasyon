@@ -32,6 +32,7 @@ namespace MvcOnlineTicariOtomasyon.Controllers
         [HttpPost]
         public ActionResult DepartmentAdd(Department department)
         {
+            department.Situation = true;
             context.Departments.Add(department);
             context.SaveChanges();
             return RedirectToAction("Index");
