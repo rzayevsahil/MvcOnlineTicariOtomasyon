@@ -1,6 +1,12 @@
 # MvcOnlineTicariOtomasyon
 <hr/>
 
+
+https://user-images.githubusercontent.com/58303745/194326723-c04b222b-90a5-4325-9d58-de0770cf40a9.mp4
+
+
+
+
 ## *Login and SignUp*
 <hr/>
 
