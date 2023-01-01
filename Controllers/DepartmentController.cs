@@ -12,9 +12,10 @@ namespace MvcOnlineTicariOtomasyon.Controllers
     {
         // GET: Department
         Context context = new Context();
-        public ActionResult Index(string p,int page=1)
+        public ActionResult Index(string p, int page = 1)
         {
-            var values = from d in context.Departments where d.Situation == true select d;//context.Departments.Where(d => d.Situation == true).ToList();
+            //context.Departments.Where(d => d.Situation == true).ToList();
+            var values = from d in context.Departments where d.Situation == true select d;
             if (!string.IsNullOrEmpty(p))
             {
                 values = values.Where(x => x.DepartmentName.Contains(p));
